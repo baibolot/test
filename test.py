@@ -29,4 +29,3 @@ class MainWindow(QWidget):#QMainWindow):
     def stopAnimation(self):
         self.movie.stop()
         self.close()
-            
