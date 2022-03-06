@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow, QWidget, QLabel, QApplication
 from PyQt5.QtGui import * 
 from PyQt5.QtCore import Qt,QTimer
+from test_two import WindowTwo
 
 class MainWindow(QWidget):#QMainWindow):
     def __init__(self):
@@ -13,19 +14,24 @@ class MainWindow(QWidget):#QMainWindow):
         self.setWindowFlag(Qt.FramelessWindowHint)
         self.label_animation = QLabel(self)
         self.movie = QMovie('1.gif')
-        self.label_animation.setGeometry(1376/2,720/2,200,200)
+        self.label_animation.setGeometry(688,360,200,200)
         self.label_animation.setMovie(self.movie)
         
         timer = QTimer(self)
         
         self.startAnimation()
-        timer.singleShot(10000,self.stopAnimation)
-        
+        timer.singleShot(5000,self.startWindowTwo)
         self.show()
         
     def startAnimation(self):
         self.movie.start()
         
-    def stopAnimation(self):
+    # def stopAnimation(self):
+    #     self.movie.stop()
+    #     self.close()
+
+    def startWindowTwo(self):
         self.movie.stop()
         self.close()
+        self.windowTwo = WindowTwo()
+        self.windowTwo.show()
